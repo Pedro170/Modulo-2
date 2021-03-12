@@ -1,0 +1,24 @@
+#CREATE DATABASE db_rh
+#DEFAULT CHARACTER SET utf8
+#DEFAULT COLLATE utf8_general_ci;
+#use db_rh;
+#CREATE TABLE tb_funcionario (
+	#id BIGINT AUTO_INCREMENT,
+    #nome VARCHAR(30) NOT NULL,
+    #nascimento DATE,
+    #sexo ENUM ('M', 'F'),
+    #nacionalidade VARCHAR(20) DEFAULT 'Brasil',
+    #salario DOUBLE,
+    #PRIMARY KEY(id)
+#) ;
+SELECT * FROM tb_funcionario;
+#INSERT INTO tb_funcionario VALUES
+#('1', 'Joseph Natal', '1985-12-25', 'M', 'Brasileiro', 2.500);
+#('2', 'Duce Palmirinha', '1973-03-11', 'F', 'Brasileira', 1400);
+#('3', 'Karine Antunes', '1999-01-25', 'F', 'Canadense', 3500);
+#('4', 'Francisco Oliveira', '1975-12-23', 'M', 'Brasileiro', 1800);
+#('5', 'Oliva Jackson', '1995-04-25', 'F', 'America', 1300);
+
+#SELECT * FROM tb_funcionario WHERE salario > 2000;
+
+#UPDATE tb_funcionario SET salario = 2500 WHERE id = 1;
