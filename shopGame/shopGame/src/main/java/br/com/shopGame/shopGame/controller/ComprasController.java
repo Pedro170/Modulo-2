@@ -1,9 +1,7 @@
-package org.generation.blogPessoal.controller;
+package br.com.shopGame.shopGame.controller;
 
 import java.util.List;
 
-import org.generation.blogPessoal.model.Postagem;
-import org.generation.blogPessoal.repository.PostagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,42 +15,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.shopGame.shopGame.model.Compras;
+
+import br.com.shopGame.shopGame.repository.ComprasRepository;
+
+@RequestMapping("/compra")
 @RestController
-@RequestMapping("/postagens")
-@CrossOrigin("*")
-public class PostagemController {
-	
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class ComprasController {
+
 	@Autowired
-	private PostagemRepository repository;
-	
+	private ComprasRepository repository;
+
 	@GetMapping
-	public ResponseEntity<List<Postagem>> GetAll() {
+	public ResponseEntity<List<Compras>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
-	
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Postagem> GetById(@PathVariable long id) {
+	public ResponseEntity<Compras> getById(@PathVariable long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-	
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo) {
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
-	}
-	
+
 	@PostMapping
-	public ResponseEntity<Postagem> post (@RequestBody Postagem postagem) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
+	public ResponseEntity<Compras> post(@RequestBody Compras id) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(id));
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<Postagem> put (@RequestBody Postagem postagem) {
-		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
+	public ResponseEntity<Compras> put(@RequestBody Compras id) {
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(id));
 	}
-	
+
 	@DeleteMapping("/{id}")
-    public void delete (@PathVariable long id) {
-        repository.deleteById(id);
+	public void delete(@PathVariable long id) {
+		repository.deleteById(id);
 	}
-} 
+
+}
